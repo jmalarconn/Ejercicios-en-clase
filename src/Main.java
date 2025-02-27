@@ -1,66 +1,38 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args){
-        int max = 10;
+    public static void main(String[] args) {
+
+        System.out.println("Bienvanido al juego");
+        System.out.println("Adivina el numero");
+
+        int max = 50;
         int min = 1;
-        int numR;
+        int num;
+        int intentos = 3;
+        int unum;
 
-        Random aleR = new Random();
+        Random numAle = new Random();
+        num=numAle.nextInt(max - min + 1) + min;
+        System.out.println("escribe un numero entre 1 y 50");
+        for (int i=0 ;i<intentos;){
 
-        numR = aleR.nextInt((max - min + 1)) + min;
-        System.out.println("el número de rondas es " + numR);
+            Scanner scanner = new Scanner(System.in);
+            unum=scanner.nextInt();
 
-        System.out.println("los valores del dado 1 son:");
-
-        int maxDado1 = 6;
-        int minDado1 = 1;
-        int numD1;
-
-        int maxDado2 = 6;
-        int minDado2 = 1;
-        int numD2;
-
-        int sumdado1 = 0, sumdado2 = 0;
-
-        boolean dado1 = true;
-        int veces1= 0;
-        while (dado1) {
-            numD1 = aleR.nextInt((maxDado1 - minDado1 + 1)) + minDado1;
-            sumdado1 +=numD1;
-            System.out.println("D1: " + numD1);
-
-            veces1++;
-            if (veces1 >= numR) {
-                dado1 = false;
-
-                System.out.println("los valores del dado 2 son:");
-
-
-                boolean dado2 = true;
-                int veces2 = 0;
-                while (dado2) {
-                    numD2 = aleR.nextInt((maxDado2 - minDado2 + 1)) + minDado2;
-                    sumdado2 +=numD2;
-                    System.out.println("D2: " + numD2);
-                    veces2++;
-
-                    if (veces2 >= numR) {
-                        dado2 = false;
-
-                        }
-                    }
-                }
+            if (unum > num){
+                System.out.println("el numero es menor");
+                intentos--;
+            } else if (unum < num) {
+                System.out.println("el numero es mayor");
+                intentos--;
+            }else {
+                System.out.println("el numero es correcto");
             }
 
-        System.out.println("la suma de los primeros dados es: " + sumdado1);
-        System.out.println("la suma de los segundos dados es: " + sumdado2);
-        if(sumdado1 > sumdado2){
-            System.out.println("dado uno gano");
         }
-        else{
-            System.out.println("el dado dos gano");
-        }
-    }
-    }
+        System.out.println("te quedaste sin intentos, el numero era: " + num);
+}
+}
 
